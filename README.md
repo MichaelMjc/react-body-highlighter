@@ -2,13 +2,13 @@
 
 [![npm](https://img.shields.io/npm/v/react-native-body-highlighter.svg)](https://www.npmjs.com/package/react-native-body-highlighter) [![Downloads](https://img.shields.io/npm/dt/react-native-body-highlighter.svg)](https://www.npmjs.com/package/react-native-body-highlighter)
 
-> SVG human body parts highlighter for react. Credit goes to [HichamELBSI](https://github.com/HichamELBSI)
+> Ported from [react-native-body-highlighter](https://github.com/HichamELBSI/react-native-body-highlighter) SVG human body parts highlighter for react. Credit goes to [HichamELBSI](https://github.com/HichamELBSI) for creating the initial.
 
 <div style="text-align:center;width:100%;">
-  <img src="./docs/screenshots/example-female-front.PNG" width="150" alt="body-highlighter" />
-  <img src="./docs/screenshots/example-female-back.PNG" width="150" alt="body-highlighter" />
-  <img src="./docs/screenshots/example-male-front.PNG" width="150" alt="body-highlighter" />
-  <img src="./docs/screenshots/example-male-back.PNG" width="150" alt="body-highlighter" />
+  <img src="https://github.com/MichaelMjc/react-body-highlighter/blob/main/docs/screenshots/example-female-front.PNG" width="150" alt="body-highlighter" />
+  <img src="https://github.com/MichaelMjc/react-body-highlighter/blob/main/docs/screenshots/example-female-back.PNG" width="150" alt="body-highlighter" />
+  <img src="https://github.com/MichaelMjc/react-body-highlighter/blob/main/docs/screenshots/example-male-front.PNG" width="150" alt="body-highlighter" />
+  <img src="https://github.com/MichaelMjc/react-body-highlighter/blob/main/docs/screenshots/example-male-back.PNG" width="150" alt="body-highlighter" />
 </div>
 
 ## Installation
