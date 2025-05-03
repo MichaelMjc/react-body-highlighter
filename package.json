@@ -18,7 +18,7 @@
 		"typecheck": "tsc --noEmit",
 		"build": "tsup index.tsx --format esm,cjs --dts",
 		"lint": "tsc",
-		"release": "pnpm run build && changeset publish --access public"
+		"release": "pnpm run build && changeset publish"
 	},
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
