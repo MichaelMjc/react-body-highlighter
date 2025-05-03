@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-native-body-highlighter.svg)](https://www.npmjs.com/package/react-native-body-highlighter) [![Downloads](https://img.shields.io/npm/dt/react-native-body-highlighter.svg)](https://www.npmjs.com/package/react-native-body-highlighter)
 
-> Ported from [react-native-body-highlighter](https://github.com/HichamELBSI/react-native-body-highlighter) SVG human body parts highlighter for react. Credit goes to [HichamELBSI](https://github.com/HichamELBSI) for creating the initial.
+> Based on the work of [HichamELBSI](https://github.com/HichamELBSI) and their [react-native-body-highlighter library](https://github.com/HichamELBSI/react-native-body-highlighter), this project ports the SVG human body part highlighting functionality to standard React.
 
 <div style="text-align:center;width:100%;">
   <img src="https://github.com/MichaelMjc/react-body-highlighter/blob/main/docs/screenshots/example-female-front.PNG" width="150" alt="body-highlighter" />
