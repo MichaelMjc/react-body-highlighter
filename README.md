@@ -1,8 +1,8 @@
-# react-native-body-highlighter
+# @mjcdev/react-body-highlighter
 
 [![npm](https://img.shields.io/npm/v/react-native-body-highlighter.svg)](https://www.npmjs.com/package/react-native-body-highlighter) [![Downloads](https://img.shields.io/npm/dt/react-native-body-highlighter.svg)](https://www.npmjs.com/package/react-native-body-highlighter)
 
-> SVG human body parts highlighter for react-native (Expo compatible).
+> SVG human body parts highlighter for react. Credit goes to [HichamELBSI](https://github.com/HichamELBSI)
 
 <div style="text-align:center;width:100%;">
   <img src="./docs/screenshots/example-female-front.PNG" width="150" alt="body-highlighter" />
@@ -16,13 +16,19 @@
 npm
 
 ```bash
-$ npm install react-native-body-highlighter
+$ npm install @mjcdev/react-body-highlighter
 ```
 
 yarn
 
 ```bash
-$ yarn add react-native-body-highlighter
+$ yarn add @mjcdev/react-body-highlighter
+```
+
+pnpm
+
+```bash
+$ pnpm add @mjcdev/react-body-highlighter
 ```
 
 ## Usage
@@ -31,33 +37,22 @@ $ yarn add react-native-body-highlighter
 
 ```jsx
 import { useState } from "react";
-import Body from "react-native-body-highlighter";
+import Body from "react-body-highlighter";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Body
-        data={[
-          { slug: "chest", intensity: 1, side: "left" },
-          { slug: "biceps", intensity: 2 },
-        ]}
-        gender="female"
-        side="front"
-        scale={1.7}
-        border="#dfdfdf"
-      />
-    </View>
-  );
+	return (
+		<Body
+			data={[
+				{ slug: "chest", intensity: 1, side: "left" },
+				{ slug: "biceps", intensity: 2 },
+			]}
+			gender="female"
+			side="front"
+			scale={1.7}
+			border="#dfdfdf"
+		/>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 ```
 
 <details>
@@ -65,81 +60,80 @@ const styles = StyleSheet.create({
 <p>
 
 ```jsx
-import { StyleSheet, Switch, Text, View } from "react-native";
-import { useState } from "react";
-import Body, { ExtendedBodyPart } from "react-native-body-highlighter";
+import React, { useState } from "react";
+import Body, { ExtendedBodyPart } from "react-body-highlighter";
+
+const Switch = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
+	return (
+		<label className="switch">
+			<input type="checkbox" {...props} />
+			<span className="slider round"></span>
+		</label>
+	);
+};
 
 export default function App() {
-  const [selectedBodyPart, setSelectedBodyPart] =
-    useState <
-    ExtendedBodyPart >
-    {
-      slug: "biceps",
-      intensity: 2,
-      side: "right",
-    };
-  const [side, setSide] = (useState < "back") | ("front" > "front");
-  const [gender, setGender] = (useState < "male") | ("female" > "male");
+	const [selectedBodyPart, setSelectedBodyPart] =
+		useState <
+		ExtendedBodyPart >
+		{
+			slug: "biceps",
+			intensity: 2,
+			side: "right",
+		};
+	const [side, setSide] = (useState < "back") | ("front" > "front");
+	const [gender, setGender] = (useState < "male") | ("female" > "male");
 
-  const sideSwitch = () =>
-    setSide((previousState) => (previousState === "front" ? "back" : "front"));
+	const sideSwitch = () =>
+		setSide((previousState) => (previousState === "front" ? "back" : "front"));
 
-  const toggleGenderSwitch = () => {
-    setGender((previousState) =>
-      previousState === "male" ? "female" : "male"
-    );
-  };
+	const toggleGenderSwitch = () => {
+		setGender((previousState) =>
+			previousState === "male" ? "female" : "male"
+		);
+	};
 
-  return (
-    <View style={styles.container}>
-      <Body
-        data={[
-          { slug: "chest", intensity: 1, side: "left" },
-          { slug: "biceps", intensity: 1 },
-          selectedBodyPart,
-        ]}
-        onBodyPartPress={(e, side) =>
-          setSelectedBodyPart({ slug: e.slug, intensity: 2, side })
-        }
-        gender={gender}
-        side={side}
-        scale={1.7}
-        border="#dfdfdf"
-      />
-      <View style={styles.switchContainer}>
-        <View style={styles.switch}>
-          <Text>Side ({side})</Text>
-          <Switch onValueChange={sideSwitch} value={side === "front"} />
-        </View>
-        <View style={styles.switch}>
-          <Text>Gender ({gender})</Text>
-          <Switch
-            onValueChange={toggleGenderSwitch}
-            value={gender === "male"}
-          />
-        </View>
-      </View>
-    </View>
-  );
+	return (
+			<Body
+				data={[
+					{ slug: "chest", intensity: 1, side: "left" },
+					{ slug: "biceps", intensity: 1 },
+					selectedBodyPart,
+				]}
+				onBodyPartClick={(e, side) =>
+					setSelectedBodyPart({ slug: e.slug, intensity: 2, side })
+				}
+				gender={gender}
+				side={side}
+				scale={1.7}
+				border="#dfdfdf"
+			/>
+			<div>
+				<div>
+					<p>Side ({side})</p>
+					<Switch onChange={(e) => {
+							if (e.target.checked) {
+								setSide("back");
+							} else {
+								setSide("front");
+							}
+						}}  />
+				</div>
+				<div>
+					<p>Gender ({gender})</p>
+					<Switch
+						onChange={(e) => {
+							if (e.target.checked) {
+								setGender("female");
+							} else {
+								setGender("male");
+							}
+						}}
+					/>
+				</div>
+			</div>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  switchContainer: {
-    flexDirection: "row",
-    gap: 30,
-  },
-  switch: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 ```
 
 </p>
@@ -150,7 +144,7 @@ const styles = StyleSheet.create({
 | Prop            | Required | Purpose                                                                                                       |
 | --------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | data            | Yes      | `BodyPartObject[]` - Array of `BodyPartObject` to highlight                                                   |
-| onBodyPartPress | No       | `Func` - `(bodyPart: BodyPartObject, side?: left \| right) => {}` Callback called when a user tap a body part |
+| onBodyPartClick | No       | `Func` - `(bodyPart: BodyPartObject, side?: left \| right) => {}` Callback called when a user tap a body part |
 | colors          | No       | `string[]` - Defaults to `['#0984e3', '#74b9ff']`                                                             |
 | side            | No       | `front \| back` - Defaults to `front`                                                                         |
 | gender          | No       | `string` - Can be "male" or "female", Defaults to `male`                                                      |
@@ -159,7 +153,7 @@ const styles = StyleSheet.create({
 
 ## BodyPart object model
 
-- #### BodyPartObject: `{ slug: BodyPartName, intensity: IntensityNumber, side?: 'left' | 'right' }`
+- #### BodyPartObject: `{ slug: BodyPartName, intensity: IntensityNumber, side?: 'left' | 'right', leftSideIntensity?:IntensityNumber, rightSideIntensity?:IntensityNumber }`
 
 - #### BodyPartName: Body part name to highlight (See the list of available body parts below)
 
