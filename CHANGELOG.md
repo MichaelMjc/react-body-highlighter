@@ -1,5 +1,11 @@
 # @mjcdev/react-body-highlighter
 
+## 0.0.4
+
+### Patch Changes
+
+- 048825b: fixed typeof window
+
 ## 0.0.3
 
 ### Patch Changes
